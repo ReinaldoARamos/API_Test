@@ -7,9 +7,12 @@ app.use(express.json())
 app.route('/').get((req, res) => res.send("hello"))
 app.route('/sobre').get((req, res) => res.send(";3"))
 app.route('/').post((req, res) => res.send(req.body))
+app.route('/:identificador').delete((res,req) =>{
+    res.send(req.params.identificador)
+})
 
 let author = "Reinaldo"
 app.route('/').put((req,res)=> {
-    author = req.body
+    author = req.body.author
     res.send(author)
 })
