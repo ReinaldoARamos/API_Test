@@ -1,13 +1,20 @@
 const express = require('express');
+const axios = require('axios');
 
 const app = express();
 
 app.listen("3000", console.log("rodando"));
 app.use(express.json())
-app.route('/').get((req, res) => res.send("oi") )
+//app.route('/').get((req, res) => res.send("oi") )
 app.route('/:variavel').get((req, res) =>  res.send(req.params.variavel))
 
 app.route('/user/query').get((req,res) => res.send(req.query.name))
+
+app.route('/').get((req, res) => {
+    axios.get('https://api.github.com/users')
+    .then(result => res.send(result.data))
+    .catch(error => console.log(error))
+})
 /*
 
 app.route('/').get((req, res) => res.send("hello"))
