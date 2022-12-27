@@ -7,6 +7,7 @@ app.use(express.json())
 app.route('/').get((req, res) => res.send("oi") )
 app.route('/:variavel').get((req, res) =>  res.send(req.params.variavel))
 
+app.route('/user/query').get((req,res) => res.send(req.query.name))
 /*
 
 app.route('/').get((req, res) => res.send("hello"))
