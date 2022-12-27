@@ -4,6 +4,10 @@ const app = express();
 
 app.listen("3000", console.log("rodando"));
 app.use(express.json())
+app.route('/').get((req, res) => res.send("oi") )
+app.route('/:variavel').get((req, res) =>  res.send(req.params.variavel))
+
+/*
 
 app.route('/').get((req, res) => res.send("hello"))
 
@@ -22,3 +26,5 @@ app.route('/').put((req,res)=> {
     author = req.body.author
     res.send(author)
 })
+
+*/
